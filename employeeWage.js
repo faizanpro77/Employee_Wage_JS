@@ -22,17 +22,22 @@ switch (empCheck) {
     }
 }
 
+function calcWage(empHrs) {
+    return empHrs * WAGE_PER_HOUR;
+}
+
 let totalEmpHrs  = 0;
 let totalWorkingDays = 0;
+let empWageArray = new Array();
 
 while (totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUMBER_OF_WORKING_DAYS) {
     totalWorkingDays++
     let empCheck = Math.floor(Math.random() * 10) % 3;
-    totalEmpHrs  += getWorkingHourse(empCheck);
+    let empHrs = getWorkingHourse(empCheck);
+    totalEmpHrs += empHrs;
+    empWageArray.push(calcWage(empHrs));
 }
 
-let empWage  = totalEmpHrs  * WAGE_PER_HOUR;
-console.log("Total Eployee Hrs : " + totalEmpHrs  + " Total Employee Wage : " + empWage );
-
-console.log("Total working days: " + totalWorkingDays);
-console.log("Total employee hours = " + totalEmpHrs+" Total employee wage = " + empWage);
+let empWage = calcWage(totalEmpHrs);
+console.log("Total employee  hours : " + totalEmpHrs + "\nTotal employee days :  " + totalWorkingDays + "\nTotal Employee Wage : " + empWage);
+ 
