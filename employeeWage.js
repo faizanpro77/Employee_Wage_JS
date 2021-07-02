@@ -1,5 +1,4 @@
-// Calculating Wages till Number of Working Days or Total Working Hours per month is Reached
-
+//Store the Daily Wage along with the Total Wage
 const IS_PART_TIME = 1;
 const IS_FULL_TIME = 2;
 const PART_TIME_HOURSE = 4;
