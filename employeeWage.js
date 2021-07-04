@@ -163,4 +163,33 @@ while (totalWorkingDays < NO_OF_WORKING_DAYS  && totalEmpHrs <= NO_OF_WORKING_HO
     });
 }
 console.log("Daily Hourse and Wage of employee : " + empDailyHrsAndWageArr);
+   
+//Object operations using Arrow Functions
+
+// Calc total Wage and total hours worked
+
+let totalWageEarned = empDailyHrsAndWageArr
+                    .filter(empHrAndWage  => empHrAndWage.dailyWage > 0)
+                    .reduce((total, empHrAndWage) => total += empHrAndWage.dailyWage, 0);
+
+let totalHoursWorked = empDailyHrsAndWageArr
+                    .filter(empHrAndWage => empHrAndWage.dailyHours > 0)
+                    .reduce((total, empHrAndWage) => total += empHrAndWage.dailyHours, 0);
+
+console.log("using arrow functions and object ----> Total Wage : " + totalWageEarned + " Total Hours Worked : " + totalHoursWorked);
+
+//Show the full workings days using foreach
+console.log("Full Working Days");
+empDailyHrsAndWageArr.filter(empHrAndWage => empHrAndWage.dailyHours == 8)
+                    .forEach(empHrAndWage => console.log(empHrAndWage.toString()));
+
+// Show Part working days using Map by reducing to String Array
+let partWorkingDaysArr = empDailyHrsAndWageArr.filter(empHrAndWage => empHrAndWage.dailyHours == 4)
+                        .map(empHrAndWage => empHrAndWage.toString());
+console.log("Part time Working Days " + partWorkingDaysArr);
+
+//No working days only using Map function
+let nonWorkingDaysNum = empDailyHrsAndWageArr.filter(empHrAndWage => empHrAndWage.dailyHours == 0)
+                    .map(empHrAndWage => empHrAndWage.dayNum);
+console.log("Non Woking Days " + nonWorkingDaysNum);
 }
